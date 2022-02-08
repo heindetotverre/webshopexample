@@ -7,6 +7,7 @@
     <div
       class="form__group form__group--checkbox"
       v-for="(filterValue, index) of filtersToRender()"
+      :key="index"
     >
       <div
         :class="`checkbox ${disabled(getItemCountOfValue(count(filterValue))) ? 'checkbox--disbled' : ''}`"

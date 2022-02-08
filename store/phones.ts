@@ -17,13 +17,13 @@ const state = reactive({
 const fetchPhoneList = async () => {
   try {
     const { data } = await useAsyncData('fetchedPhones', async () => $fetch('/api/allPhones'))
-    if (data.value.message === 'AllPhonesFetched') {
-      const phones = data.value.phones as Array<Phone>
+    if (data?.value?.message === 'AllPhonesFetched') {
+      const phones = data?.value?.phones as Array<Phone>
       state.phones = phones
       state.filteredPhones = phones
       createFilters()
     } else {
-      throw new Error(data.value.message)
+      throw new Error(data?.value?.message)
     }
   } catch (error) {
     // send to some error endpoint
@@ -67,12 +67,8 @@ const sort = (sortBy) => {
   }
   if (sortBy === Sort.New) {
     sortedPhones = state.filteredPhones.sort((a, b) => {
-      return a.release_date.toLowerCase() < b.release_date.toLowerCase()
-        ? -1
-        : a.release_date.toLowerCase() > b.release_date.toLowerCase()
-          ? 1
-          : 0
-    })
+      return a.release_date.localeCompare(b.release_date)
+    }).reverse()
     state.filteredPhones = sortedPhones
   }
 }
@@ -120,7 +116,7 @@ const createFilters = () => {
     }
   }
 
-  const createColors = (title) => {
+  const createColors = (title, filterKey) => {
     let colors = []
     for (const phone of state.phones) {
       colors = [...colors, ...phone.colors]
@@ -128,13 +124,13 @@ const createFilters = () => {
     return {
       title: title,
       filteredItems: createUniques(colors),
-      filterKey: 'colors'
+      filterKey: filterKey
     }
   }
 
   state.filters = [
     createUniqueFilterValues('Merk', 'manufacturer'),
-    createColors('Kleur'),
+    createColors('Kleur', 'colors'),
     createUniqueFilterValues('5G', 'has_5g'),
     createUniqueFilterValues('Besturingssyteem', 'operating_system'),
     createUniqueFilterValues('E-Sim', 'has_esim'),
