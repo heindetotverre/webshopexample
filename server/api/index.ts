@@ -1,12 +1,11 @@
 import { IncomingMessage, ServerResponse } from 'http'
-import { send, sendError } from 'h3'
-import phonesJson from '../resources/phone_feed.json'
+import { products } from '../resources/phone_feed.json'
 
 export default async (req: IncomingMessage, res: ServerResponse) => {
   if (req.url === '/allPhones') {
     try {
       return {
-        phones: phonesJson.products,
+        phones: products,
         message: 'AllPhonesFetched'
       }
     } catch (error) {

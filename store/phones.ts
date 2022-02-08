@@ -1,4 +1,3 @@
-import { checkCompatEnabled } from "@vue/compiler-core"
 import { reactive, readonly, } from "vue"
 import { Phone, Sort } from "~~/types"
 
