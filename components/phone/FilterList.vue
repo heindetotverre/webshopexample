@@ -1,25 +1,20 @@
 <template>
-  <div class="filter__list">
-    <div>{{ brandfilters() }}</div>
-    <div>{{ otherFilters() }}</div>
-    <UiButton
-      text="Alle filters verwijderen"
-      domclass="link"
-      @click="store.phones.do.filter('reset')"
-    />
+  <div v-if="Object.keys(filters).length" class="filter__list">
+    <div>{{ filters }}</div>
+    <UiButton text="Alle filters verwijderen" domclass="link" @click="reset()" />
   </div>
 </template>
 
 <script lang="ts" setup>
 import { store } from '~~/store'
 
+const emits = defineEmits([
+  'clearDropdownFilterValues'
+])
+
 const filters = computed(() => store.phones.get.getActiveFilters())
 
-const brandfilters = () => {
-  return Object.entries(filters.value)
-}
-
-const otherFilters = () => {
-  return Object.keys(filters.value)
+const reset = () => {
+  emits('clearDropdownFilterValues')
 }
 </script>

@@ -166,7 +166,6 @@ const filterPhones = () => {
     setPhonesArray(state.phones)
   }
   if (activeFilterCategories.length > 1) {
-    console.log('substract')
-    console.log(activeFilterCategories)
+
   }
 }

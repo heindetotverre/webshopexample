@@ -32,6 +32,9 @@ const props = defineProps({
   },
   domclass: {
     type: String
+  },
+  reset: {
+    type: Boolean
   }
 })
 
@@ -50,6 +53,10 @@ watch(() => props.viewState, () => {
   props.viewState
     ? document.addEventListener('click', handleClickOutside)
     : document.removeEventListener('click', handleClickOutside)
+})
+
+watch(() => props.reset, () => {
+  resetFilters()
 })
 
 const handleClickOutside = (event) => {

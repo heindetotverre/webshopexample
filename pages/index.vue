@@ -10,14 +10,19 @@
     </h1>
     <PhoneFilter
       v-if="renderType === Type.Desktop"
+      :reset="resetFilters"
       :viewState="filterViewState"
       domclass="desktop"
       @toggle-filter="toggleFilter()"
     />
-    <PhoneFilterList v-if="renderType === Type.Desktop" />
+    <PhoneFilterList
+      v-if="renderType === Type.Desktop"
+      @clearDropdownFilterValues="resetFilters = !resetFilters"
+    />
     <PhoneList :phones="phones" @toggle-filter="toggleFilter()" />
     <PhoneFilter
       v-if="renderType === Type.Mobile"
+      :reset="resetFilters"
       :viewState="filterViewState"
       domclass="spread slide-in mobile"
       @toggle-filter="toggleFilter()"
@@ -50,6 +55,7 @@ onDeactivated(() => {
 
 const filterViewState = ref(State.Closed)
 const renderType = ref(Type.Desktop)
+const resetFilters = ref()
 
 const checkWidth = () => {
   store.phones.do.filter('reset')
