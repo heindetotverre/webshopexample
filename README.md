@@ -16,3 +16,7 @@ npm run dev
 - I excluded url manipulation vased on filters because of the time frame
 - I exluded svg's/icons because of the time frame
 - I excluded header/footer becuase of the timeframe
+
+# PS
+
+Vue 3 as the standard as of yesterday. Happt days :)

@@ -1,9 +1,10 @@
+import { checkCompatEnabled } from "@vue/compiler-core"
 import { reactive, readonly, } from "vue"
 import { Phone, Sort } from "~~/types"
 
 // externals
 const initialState = {
-  activeFilters: {},
+  activeFilters: {} as any,
   phones: [] as Array<Phone>,
   filters: [] as Array<any>,
   filteredPhones: [] as Array<Phone>
@@ -36,17 +37,15 @@ const filter = (filter) => {
     filterPhones()
     return
   }
-  // if filter categrory hasnt been set yet
   if (!state.activeFilters[filter.key]?.length) {
     state.activeFilters[filter.key] = []
   }
-  // push new filter
+
   state.activeFilters[filter.key].push(filter.value)
-  // delete filter if already exusts
+
   if (state.activeFilters[filter.key].filter(f => f === filter.value).length > 1) {
     state.activeFilters[filter.key] = state.activeFilters[filter.key].filter(f => f !== filter.value)
   }
-  // delete filter category
   if (!state.activeFilters[filter.key].length) {
     delete state.activeFilters[filter.key]
   }
@@ -150,22 +149,29 @@ const createUniques = (array) => {
 }
 
 const filterPhones = () => {
-  const filteredPhonesAddedPerCategory = []
-  const activeFilterCategories = Object.entries(state.activeFilters)
-
-  Object.entries(state.activeFilters).forEach((filterCategory) => {
-    (filterCategory[1] as Array<any>).forEach((filter) => {
-      const filteredPhones = filterCategory[0] !== 'colors'
-        ? state.phones.filter(p => p[filterCategory[0]] === filter)
-        : state.phones.filter(p => p[filterCategory[0]].includes(filter))
-      filteredPhonesAddedPerCategory.push(...filteredPhones)
-      setPhonesArray(filteredPhonesAddedPerCategory)
+  let totalFilteredPhones = []
+  Object.keys(state.activeFilters).forEach((key) => {
+    if (key === 'manufacturer') {
+      state.activeFilters.manufacturer.forEach((filter) => {
+        const filteredPhones = state.phones.filter(p => p.manufacturer === filter)
+        totalFilteredPhones.push(...filteredPhones)
+      })
+      return
+    }
+    if (key === 'colors') {
+      state.activeFilters.colors.forEach((filter) => {
+        const filteredPhones = state.filteredPhones.filter(p => p.colors.includes(filter))
+        totalFilteredPhones = filteredPhones
+      })
+      return
+    }
+    state.activeFilters[key].forEach((filter) => {
+      const filteredPhones = state.filteredPhones.filter(p => p[key] === filter)
+      totalFilteredPhones = filteredPhones
     })
   })
-  if (!activeFilterCategories.length) {
+  setPhonesArray(totalFilteredPhones)
+  if (!Object.keys(state.activeFilters).length) {
     setPhonesArray(state.phones)
-  }
-  if (activeFilterCategories.length > 1) {
-
   }
 }
