@@ -12,11 +12,8 @@ npm run dev
 - I chose for a mild TypeScript support (not strict) for code completion and therefore time saving to focus on important aspects of the prototype
 - I used some 'any' types to focus on important aspects of the prototype
 - I used some resources I had hanging around from private projects (styling mixins for instance)
-- I chose my own implementation of state management because this is possible in Vue3 and because of time saving (less scaffolding)
-- I excluded url manipulation based on filters to focus on important aspects of the prototype
+- I chose my own implementation of state management because this is possible, because of time saving (less scaffolding) and less packages in project
+- I excluded url manipulation based on filters to limit scope of the project
 - I exluded svg's/icons to focus on important aspects of the prototype
 - I excluded header/footer to focus on important aspects of the prototype
-
-# PS
-
-Vue 3 as the standard as of 07-02. Happy days :)
+- The elements that look unfinished are unfinished

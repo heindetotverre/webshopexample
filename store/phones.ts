@@ -39,16 +39,13 @@ const filter = (filter) => {
   if (!state.activeFilters[filter.key]?.length) {
     state.activeFilters[filter.key] = []
   }
-
   state.activeFilters[filter.key].push(filter.value)
-
   if (state.activeFilters[filter.key].filter(f => f === filter.value).length > 1) {
     state.activeFilters[filter.key] = state.activeFilters[filter.key].filter(f => f !== filter.value)
   }
   if (!state.activeFilters[filter.key].length) {
     delete state.activeFilters[filter.key]
   }
-
   filterPhones()
 }
 
