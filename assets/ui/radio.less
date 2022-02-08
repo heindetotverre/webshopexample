@@ -1,0 +1,63 @@
+.radio {
+  &__button {
+    outline: 1px solid @light-grey;
+    outline-offset: -1px;
+    border-radius: 0.5rem;
+    padding: 1.5rem 1.5rem 1.5rem 3.5rem;
+    position: relative;
+
+    .input {
+      .center--vertically;
+      outline: 1px solid @grey;
+      border-radius: 50%;
+      display: block;
+      left: 1rem;
+      position: absolute;
+      height: 13px;
+      width: 13px;
+    }
+
+    &--active {
+      background-color: rgba(@blue, 0.1);
+      outline: 2px solid @blue;
+      outline-offset: -2px;
+
+      .input {
+        outline: 4px solid @blue;
+        outline-offset: -3px;
+      }
+    }
+
+    & + .radio__button {
+      margin-top: 0.5rem;
+    }
+  }
+
+  .break(m; {
+    cursor: pointer;
+    position: relative;
+    min-width: 15rem;
+
+    .desktop {
+      border: 1px solid @dark-grey;
+      font-size: 1.2rem;
+      padding: 0.8rem 5rem 0.8rem 0.8rem;
+    }
+
+    &__content {
+      .dropdownContent
+    }
+
+    &__button {
+      background-color: white;
+      outline: 0;
+      padding: 1rem 1rem 1rem 3rem;
+    }
+
+    &:hover {
+      .radio__content {
+        display: block;
+      }
+    }
+  });
+}

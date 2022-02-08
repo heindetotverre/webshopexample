@@ -1,0 +1,35 @@
+.dropdown {
+  border-bottom: 1px solid @grey;
+  padding: 1.5rem 1.5rem 1.5rem 0;
+
+  .trigger {
+    &--triggered {
+      color: @green;
+      margin-bottom: 1rem;
+    }
+  }
+
+  .break(m; {
+    border: 1px solid @dark-grey;
+    padding: 0.8rem 2rem 0.8rem 0.8rem;
+    position: relative;
+
+    .trigger--triggered {
+      color: black;
+      font-size: 1.2rem;
+      margin-bottom: initial;
+    }
+
+    & + .dropdown {
+      margin-left: 1rem;
+    }
+
+    &__content {
+      .dropdownContent
+    }
+
+    &:hover .dropdown__content {
+      display: block;
+    }
+  });
+}

@@ -1,0 +1,40 @@
+.main {
+  padding: 2rem;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.image {
+  width: 100%;
+
+  img {
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+  }
+}
+
+.message {
+  background-color: @light-green;
+  padding-left: 4rem;
+}
+
+.mobile {
+  .break(m, {
+    display: none;
+    pointer-events: none;
+  });
+}
+
+.desktop {
+  .break(max-m, {
+    display: none;
+    pointer-events: none;
+  });
+}
+
+.break(m; {
+  .main {
+    padding-top: 2rem;
+  }
+});

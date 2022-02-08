@@ -1,0 +1,48 @@
+// viewport manager
+.break(xs,@rules) {
+  @media only screen and (min-width: 370px) {
+    @rules();
+  }
+}
+
+.break(s,@rules) {
+  @media only screen and (min-width: 480px) {
+    @rules();
+  }
+}
+
+.break(m,@rules) {
+  @media only screen and (min-width: 768px) {
+    @rules();
+  }
+}
+
+.break(l,@rules) {
+  @media only screen and (min-width: 992px) {
+    @rules();
+  }
+}
+
+.break(xl,@rules) {
+  @media only screen and (min-width: 1200px) {
+    @rules();
+  }
+}
+
+.break(xxl,@rules) {
+  @media only screen and (min-width: 1400px) {
+    @rules();
+  }
+}
+
+.break(max-m,@rules) {
+  @media only screen and (max-width: 768px) {
+    @rules();
+  }
+}
+
+.break(small-port-fix,@rules) {
+  @media only screen and (max-width: 350px) {
+    @rules();
+  }
+}

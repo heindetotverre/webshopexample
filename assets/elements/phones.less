@@ -1,0 +1,78 @@
+.phones {
+  &__title {
+    color: @green;
+  }
+
+  &__list {
+    margin-top: 2rem;
+  }
+
+  &__item {
+    background-color: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    position: relative;
+
+    .sub-title {
+      font-weight: 400;
+    }
+
+    .title {
+      font-weight: 700;
+    }
+
+    .link__wrapper--right {
+      margin-top: auto;
+    }
+
+    & + .phones__item {
+      margin-top: 2rem;
+    }
+
+    .promotion {
+      &__sticker {
+        left: 4rem;
+        position: absolute;
+        top: 12rem;
+        width: 12rem;
+      }
+
+      &__label {
+        background-color: @medium-green;
+        border-radius: 2rem;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        padding: 1rem 2rem;
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+  }
+
+  .break(m; {
+    &__list {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 0;
+    }
+
+    &__item {
+      margin-left: 2rem;
+      margin-top: 2rem;
+      width: calc((100% / 3) - 2rem);
+
+      &:first-child,
+      &:nth-of-type(3n + 1) {
+        margin-left: 0;
+      }
+    }
+
+    .promotion__sticker {
+      top: 15rem;
+    }
+  });
+}

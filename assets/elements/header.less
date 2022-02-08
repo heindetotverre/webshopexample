@@ -1,0 +1,39 @@
+.header-prim,
+.header-sec {
+  background-color: white;
+  display: flex;
+}
+
+.header-sec {
+  border-top: 2px solid @light-grey;
+  overflow-x: scroll;
+  max-width: 100vw;
+}
+
+header {
+  background-color: white;
+}
+
+header ul {
+  display: flex;
+
+  li {
+    display: block;
+    margin: 0 1rem;
+    padding: 1.5rem 0;
+    white-space: nowrap;
+
+    a {
+      color: black;
+    }
+  }
+}
+
+.break(m; {
+  .header-prim,
+  .header-sec ul {
+    margin: 0 auto;
+    max-width: @siteWidth;
+    width: 100%;
+  }
+});
