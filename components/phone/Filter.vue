@@ -42,12 +42,11 @@ const emits = defineEmits([
   'toggle-filter'
 ])
 
-const phones = computed(() => store.phones.get.getFilteredPhoneList())
-const filters = computed(() => store.phones.get.getFilters())
-
-const filterDomRef = ref()
-const resetFilter = ref()
-const sortMethod = ref(Sort.Most)
+const phones = computed(() => store.phones.get.getFilteredPhoneList()),
+  filters = computed(() => store.phones.get.getFilters()),
+  filterDomRef = ref(),
+  resetFilter = ref(),
+  sortMethod = ref(Sort.Most)
 
 watch(() => props.viewState, () => {
   props.viewState

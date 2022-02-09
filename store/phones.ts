@@ -17,7 +17,7 @@ const fetchPhoneList = async () => {
   try {
     const { data } = await useAsyncData('fetchedPhones', async () => $fetch('/api/allPhones'))
     if (data?.value?.message === 'AllPhonesFetched') {
-      const phones = data?.value?.phones as Array<Phone>
+      const phones = data?.value?.products as Array<Phone>
       state.phones = phones
       state.filteredPhones = phones
       createFilters()
@@ -106,9 +106,9 @@ const createFilters = () => {
   const createUniqueFilterValues = (title, filterKey) => {
     const mapped = state.phones.map(p => p[filterKey])
     return {
-      title: title,
+      title,
       filteredItems: createUniques(mapped),
-      filterKey: filterKey
+      filterKey
     }
   }
 
@@ -118,9 +118,9 @@ const createFilters = () => {
       colors = [...colors, ...phone.colors]
     }
     return {
-      title: title,
+      title,
       filteredItems: createUniques(colors),
-      filterKey: filterKey
+      filterKey
     }
   }
 

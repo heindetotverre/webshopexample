@@ -53,9 +53,10 @@ onDeactivated(() => {
   window.removeEventListener('resize', checkWidth)
 })
 
-const filterViewState = ref(State.Closed)
-const renderType = ref(Type.Desktop)
-const resetFilters = ref()
+
+const filterViewState = ref(State.Closed),
+  renderType = ref(Type.Desktop),
+  resetFilters = ref()
 
 const checkWidth = () => {
   store.phones.do.filter('reset')

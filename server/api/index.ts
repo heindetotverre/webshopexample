@@ -5,12 +5,12 @@ export default async (req: IncomingMessage, res: ServerResponse) => {
   if (req.url === '/allPhones') {
     try {
       return {
-        phones: products,
+        products,
         message: 'AllPhonesFetched'
       }
     } catch (error) {
       return {
-        error: error,
+        error,
         message: 'NoPhonesFetched'
       }
     }

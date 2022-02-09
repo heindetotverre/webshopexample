@@ -43,8 +43,8 @@ const props = defineProps({
   }
 })
 
-const openstate = ref(true)
-const checkboxValue = ref({})
+const openstate = ref(true),
+  checkboxValue = ref({})
 
 watch(() => props.resetFilter, () => {
   checkboxValue.value = {}
