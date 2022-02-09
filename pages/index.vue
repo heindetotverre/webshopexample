@@ -53,7 +53,6 @@ onDeactivated(() => {
   window.removeEventListener('resize', checkWidth)
 })
 
-
 const filterViewState = ref(State.Closed),
   renderType = ref(Type.Desktop),
   resetFilters = ref()

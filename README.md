@@ -8,7 +8,7 @@ npm run dev
 
 # Motivation
 
-- I chose Nuxt3 as per advice from a colleague to show my skills in the lastest tech
+- I chose Nuxt3 as per advice from a colleague to show my skills in the latest tech
 - I chose for a mild TypeScript support (not strict) for code completion and therefore time saving to focus on important aspects of the prototype
 - I used some 'any' types to focus on important aspects of the prototype
 - I used some resources I had hanging around from private projects (styling mixins for instance)
